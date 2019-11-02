@@ -37,11 +37,11 @@ public class SlidedApp extends JFrame {
 		contentPane.add(btnReset);
 		
 		JButton btnQuit = new JButton("Quit");
-		btnQuit.setBounds(231, 11, 89, 23);
+		btnQuit.setBounds(240, 11, 89, 23);
 		contentPane.add(btnQuit);
 		
 		JLabel lblNumberOfMoves = new JLabel("Number of Moves");
-		lblNumberOfMoves.setBounds(124, 5, 97, 14);
+		lblNumberOfMoves.setBounds(120, 5, 100, 14);
 		contentPane.add(lblNumberOfMoves);
 	}
 }

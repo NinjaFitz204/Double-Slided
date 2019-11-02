@@ -29,11 +29,20 @@ public class PuzzleView extends JPanel{
 			int col = location.col;
 			
 			//sets color to draw Tile
-			if (tile.getFlippedStatus())
+			if (!tile.getFlippedStatus())
 				g.setColor(Color.GRAY);
 			else
 				g.setColor(Color.BLACK);
+			//draws tile, only 95 to create white space between tiles
+			g.fillRect(col*100, row*100, 95, 95);
 			
+			//sets color to draw number
+			//sets color to draw Tile
+			if (tile.getFlippedStatus())
+				g.setColor(Color.WHITE);
+			else
+				g.setColor(Color.BLACK);
+			g.drawString("" + tile.getNumber(), col*100+50, row*100+50);
 			
 			
 		}

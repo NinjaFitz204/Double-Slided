@@ -2,7 +2,7 @@ package doubeSlide.model;
 
 public class Model {
 	
-	private Puzzle puzzle;
+	public Puzzle puzzle;
 	
 	public Model() {
 		puzzle = new Puzzle();
@@ -11,6 +11,10 @@ public class Model {
 	public FilledTile[] getTiles() {
 		
 		return puzzle.tiles;
+	}
+	
+	public Tile getEmptyTile() {
+		return puzzle.emptyTile;
 	}
 
 }

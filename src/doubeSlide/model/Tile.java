@@ -4,7 +4,7 @@ public class Tile {
 	/**
 	 * location of the tile
 	 */
-	protected Location location;
+	protected Location location = new Location(0,0);
 	
 	public Tile() {
 

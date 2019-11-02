@@ -37,21 +37,23 @@ public class FilledTile extends Tile{
 	}
 	
 	/**
-	 * 
-	 * @return
-	 * the number that is currently facing up
-	 */
-	public int getNumber() {
-		return black;
-	}
-	
-	/**
 	 * @return
 	 * true if black is up
 	 * false if gray is up
 	 */
 	public boolean getFlippedStatus() {
 		return flipped;
+	}
+	
+	/**
+	 * 
+	 * @return number that is facing up
+	 */
+	public int getNumber() {
+		if(flipped)
+			return black;
+		else
+			return gray;
 	}
 
 }
