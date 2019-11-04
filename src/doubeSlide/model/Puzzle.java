@@ -5,6 +5,8 @@ public class Puzzle {
 	
 	public Tile emptyTile = new Tile();
 	public FilledTile tiles[] = {new FilledTile(1,false),new FilledTile(4,false),new FilledTile(2,true),new FilledTile(2,false),new FilledTile(1,false),new FilledTile(3,true),new FilledTile(3,false),new FilledTile(4,false)};
+	public String endCondition = "";
+	
 	
 	public Puzzle(){
 		// creates tiles
@@ -27,11 +29,11 @@ public class Puzzle {
 	/**
 	 * test if the puzzle is at a win or lose state
 	 */
-	public String endCondition() {
-		String endCondition = "";
-		endCondition += isWin();
-		endCondition += isLose();
-		return endCondition;
+	public void endCondition() {
+		String endCond = "";
+		endCond += isWin();
+		endCond += isLose();
+		endCondition = endCond;
 	}
 	
 	/**

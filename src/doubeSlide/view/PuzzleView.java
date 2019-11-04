@@ -22,6 +22,8 @@ public class PuzzleView extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
+		
+		endCondition = model.puzzle.endCondition;
 
 		if (endCondition.contentEquals("")) {
 			// loops through tiles to draw them
@@ -56,8 +58,6 @@ public class PuzzleView extends JPanel {
 		}
 	}
 
-	public void endCondition(String condition) {
-		endCondition = condition;
-	}
+
 
 }

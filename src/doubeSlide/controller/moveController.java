@@ -1,15 +1,18 @@
 package doubeSlide.controller;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import doubeSlide.model.FilledTile;
 import doubeSlide.model.Location;
 import doubeSlide.model.Model;
 import doubeSlide.view.SlidedApp;
 
-public class moveController extends MouseAdapter {
+public class moveController implements KeyListener,MouseListener {
 	Model model;
 	SlidedApp app;
 
@@ -23,7 +26,7 @@ public class moveController extends MouseAdapter {
 	 * 
 	 * @param loc
 	 */
-	public void MoveTile(Location loc) {
+	public void moveTile(Location loc) {
 		// gets location of empty tile
 		Location empty = model.getEmptyTile().getLocation();
 		System.out.print(" ");
@@ -61,9 +64,8 @@ public class moveController extends MouseAdapter {
 		model.puzzle.emptyTile.location = loc;
 		model.puzzle.emptyTile.position = pos;
 		
-		String endCondition = model.puzzle.endCondition();
-		
-		app.endCondition(endCondition);		
+		model.puzzle.endCondition();
+			
 		app.repaint();
 
 		
@@ -95,6 +97,74 @@ public class moveController extends MouseAdapter {
 		System.out.print(row);
 		System.out.print(col);
 
-		MoveTile(new Location(row, col));
+		moveTile(new Location(row, col));
+	}
+
+	@Override
+	public void keyPressed(KeyEvent me) {
+		System.out.println("keypressed");
+		Location empty = model.puzzle.emptyTile.location;
+		int row = empty.row;
+		int col = empty.col;
+		
+		if(me.getKeyCode() == me.VK_KP_RIGHT) {
+			col++;
+			
+		}if(me.getKeyCode() == me.VK_KP_LEFT) {
+			col--;
+			
+		}if(me.getKeyCode() == me.VK_KP_DOWN) {
+			row--;
+			
+		}if(me.getKeyCode() == me.VK_KP_UP) {
+			row++;
+		}
+		
+		if(row>3||col>3) {
+			
+		}else {
+			empty.col=col;
+			empty.row=row;
+		}
+		
+		moveTile(empty);
+		
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		System.out.println("keyrelease");
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		System.out.println("keytyped");
+		
 	}
 }

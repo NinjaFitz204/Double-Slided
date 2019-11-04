@@ -16,5 +16,10 @@ public class Model {
 	public Tile getEmptyTile() {
 		return puzzle.emptyTile;
 	}
+	
+	public void resetPuzzle() {
+		
+		puzzle = new Puzzle();
+	}
 
 }
