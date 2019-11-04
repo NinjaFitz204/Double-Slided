@@ -76,6 +76,11 @@ public class moveController implements KeyListener,MouseListener {
 	 * gets the row and col of the tile that is clicked
 	 */
 	public void mousePressed(MouseEvent me) {
+		
+		//stops mouseevent if there is an endcondition
+		if(!model.puzzle.endCondition.equals(""))
+			return;
+		
 		Point point = me.getPoint();
 		// gets row and column
 		int col;
