@@ -15,6 +15,7 @@ import doubeSlide.model.Model;
 public class SlidedApp extends JFrame {
 
 	private JPanel contentPane;
+	JPanel gamePanel;
 
 	/**
 	 * Create the frame.
@@ -27,10 +28,10 @@ public class SlidedApp extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new PuzzleView(model);
-		panel.addMouseListener(new moveController(this, model));
-		panel.setBounds(20, 45, 310, 350);
-		contentPane.add(panel);
+		gamePanel = new PuzzleView(model);
+		gamePanel.addMouseListener(new moveController(this, model));
+		gamePanel.setBounds(20, 45, 310, 350);
+		contentPane.add(gamePanel);
 		
 		JButton btnReset = new JButton("Reset");
 		btnReset.setBounds(10, 11, 89, 23);
@@ -43,5 +44,9 @@ public class SlidedApp extends JFrame {
 		JLabel lblNumberOfMoves = new JLabel("Number of Moves");
 		lblNumberOfMoves.setBounds(120, 5, 100, 14);
 		contentPane.add(lblNumberOfMoves);
+	}
+	
+	public void endCondition(String condition) {
+		((PuzzleView) gamePanel).endCondition(condition);
 	}
 }

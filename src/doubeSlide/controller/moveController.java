@@ -60,50 +60,13 @@ public class moveController extends MouseAdapter {
 		model.puzzle.tiles[clickedTile].flip();
 		model.puzzle.emptyTile.location = loc;
 		model.puzzle.emptyTile.position = pos;
-
+		
+		String endCondition = model.puzzle.endCondition();
+		
+		app.endCondition(endCondition);		
 		app.repaint();
 
-		isWin();
-		isLose();
-
-	}
-
-	public void isWin() {
 		
-		boolean isWinning = true;
-		
-		//test if tiles are in right place
-		for(FilledTile tile: model.puzzle.tiles) {
-			switch (tile.position) {
-			case(1):
-				if(!(tile.flipped && tile.getNumber() == 1))
-					isWinning = false;
-				break;
-			case(2):
-				break;
-			case(3):
-				break;
-			case(4):
-				break;
-			case(5):
-				break;
-			case(6):
-				break;
-			case(7):
-				break;
-			case(8):
-				break;
-			case(9):
-				break;
-			}
-			//breaks out if a tile is out place
-			if(!isWinning)
-				return;
-		}
-
-	}
-
-	public void isLose() {
 
 	}
 
