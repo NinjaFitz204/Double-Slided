@@ -13,7 +13,7 @@ public class FilledTile extends Tile{
 	 * true if black is up
 	 * false if gray is up
 	 */
-	private boolean flipped;
+	public boolean flipped;
 	
 	/**
 	 * creates Filled Tile object
@@ -28,21 +28,16 @@ public class FilledTile extends Tile{
 	}
 	
 	/**
-	 * sets the location of the tile
-	 * @param row - row of the tile
-	 * @param col - column of the tile
-	 */
-	public void setLocation(int row, int col) {
-		location.setLocation(row,col);
-	}
-	
-	/**
 	 * @return
 	 * true if black is up
 	 * false if gray is up
 	 */
 	public boolean getFlippedStatus() {
 		return flipped;
+	}
+	
+	public void flip() {
+		flipped = !flipped;
 	}
 	
 	/**
