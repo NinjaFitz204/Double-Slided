@@ -41,7 +41,7 @@ public class SlidedApp extends JFrame {
 		contentPane.add(gamePanel);
 
 		JButton btnReset = new JButton("Reset");
-		btnReset.setBounds(10, 11, 89, 23);
+		btnReset.setBounds(10, 11, 70, 23);
 		contentPane.add(btnReset);
 		// adds function to the reset button
 		btnReset.addActionListener(new ActionListener() {
@@ -52,7 +52,7 @@ public class SlidedApp extends JFrame {
 		});
 
 		JButton btnQuit = new JButton("Quit");
-		btnQuit.setBounds(240, 11, 89, 23);
+		btnQuit.setBounds(260, 11, 70, 23);
 		contentPane.add(btnQuit);
 		// adds function to the reset button
 		btnQuit.addActionListener(new ActionListener() {
@@ -62,7 +62,7 @@ public class SlidedApp extends JFrame {
 		});
 
 		JLabel lblNumberOfMoves = new JLabel("Number of Moves");
-		lblNumberOfMoves.setBounds(120, 5, 100, 14);
+		lblNumberOfMoves.setBounds(120, 20, 100, 14);
 		contentPane.add(lblNumberOfMoves);
 	}
 

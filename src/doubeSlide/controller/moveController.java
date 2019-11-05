@@ -3,13 +3,14 @@ package doubeSlide.controller;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import doubeSlide.model.FilledTile;
 import doubeSlide.model.Location;
 import doubeSlide.model.Model;
+import doubeSlide.model.Puzzle;
+import doubeSlide.model.Tile;
 import doubeSlide.view.SlidedApp;
 
 public class moveController implements KeyListener,MouseListener {
@@ -27,8 +28,13 @@ public class moveController implements KeyListener,MouseListener {
 	 * @param loc
 	 */
 	public void moveTile(Location loc) {
+		Puzzle puz = model.getPuzzle();
+		FilledTile[] tiles = puz.getTiles();
+		Tile emptyTile = puz.getEmpty();
+
+		int clickedTile = 0;
 		// gets location of empty tile
-		Location empty = model.getEmptyTile().getLocation();
+		Location empty = puz.getEmpty().getLocation();
 		System.out.print(" ");
 		System.out.print(empty.row);
 		System.out.println(empty.col);
@@ -38,16 +44,12 @@ public class moveController implements KeyListener,MouseListener {
 			return;
 		}
 
-		int clickedTile = 0;
-
 		// checks if mouse click is next to empty
-
 		if ((loc.row == empty.row && (loc.col == empty.col + 1 || loc.col == empty.col - 1))
 				|| (loc.col == empty.col && (loc.row == empty.row + 1 || loc.row == empty.row - 1))) {
 			// move and flips tile to empty spot
 			for (int i = 0; i < 9; i++) {
-				if (model.puzzle.tiles[i].getLocation().row == loc.row
-						&& model.puzzle.tiles[i].getLocation().col == loc.col) {
+				if (tiles[i].getLocation().row == loc.row && tiles[i].getLocation().col == loc.col) {
 					clickedTile = i;
 					break;
 				}
@@ -57,15 +59,21 @@ public class moveController implements KeyListener,MouseListener {
 		}
 
 		// swaps position of the empty and clicked tile
-		int pos = model.puzzle.tiles[clickedTile].position;
-		model.puzzle.tiles[clickedTile].location = empty;
-		model.puzzle.tiles[clickedTile].position = model.puzzle.emptyTile.position;
-		model.puzzle.tiles[clickedTile].flip();
-		model.puzzle.emptyTile.location = loc;
-		model.puzzle.emptyTile.position = pos;
+		int pos = tiles[clickedTile].getPosition();
+		tiles[clickedTile].setLocation(empty);
+		tiles[clickedTile].setPosition(emptyTile.getPosition());
+		tiles[clickedTile].flip();
+		emptyTile.setLocation(loc);
+		emptyTile.setPosition(pos);
+		puz.addMove();
 		
-		model.puzzle.endCondition();
-			
+		//set all vars
+		puz.setTiles(tiles);
+		puz.setEmpty(emptyTile);
+		model.setPuzzle(puz);
+		//test end condition
+		model.getPuzzle().endCondition();
+		//redraws 	
 		app.repaint();
 
 		
@@ -78,7 +86,7 @@ public class moveController implements KeyListener,MouseListener {
 	public void mousePressed(MouseEvent me) {
 		
 		//stops mouseevent if there is an endcondition
-		if(!model.puzzle.endCondition.equals(""))
+		if(!model.getPuzzle().getEndCondition().equals(""))
 			return;
 		
 		Point point = me.getPoint();
@@ -107,8 +115,9 @@ public class moveController implements KeyListener,MouseListener {
 
 	@Override
 	public void keyPressed(KeyEvent me) {
+		/*
 		System.out.println("keypressed");
-		Location empty = model.puzzle.emptyTile.location;
+		Location empty = model.getPuzzle().emptyTile.location;
 		int row = empty.row;
 		int col = empty.col;
 		
@@ -133,8 +142,9 @@ public class moveController implements KeyListener,MouseListener {
 		}
 		
 		moveTile(empty);
-		
+		*/
 	}
+
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {

@@ -2,10 +2,19 @@ package doubeSlide.model;
 
 public class Puzzle {
 	
-	
-	public Tile emptyTile = new Tile();
-	public FilledTile tiles[] = {new FilledTile(1,false),new FilledTile(4,false),new FilledTile(2,true),new FilledTile(2,false),new FilledTile(1,false),new FilledTile(3,true),new FilledTile(3,false),new FilledTile(4,false)};
-	public String endCondition = "";
+	Tile emptyTile = new Tile();
+	/**
+	 * array of tlies in the puzzle
+	 */
+	FilledTile tiles[] = {new FilledTile(1,false),new FilledTile(4,false),new FilledTile(2,true),new FilledTile(2,false),new FilledTile(1,false),new FilledTile(3,true),new FilledTile(3,false),new FilledTile(4,false)};
+	/**
+	 * holds the end condition 
+	 */
+	String endCondition = "";
+	/**
+	 * hold the number of moves
+	 */
+	int numberMoves;
 	
 	
 	public Puzzle(){
@@ -24,6 +33,7 @@ public class Puzzle {
 				i++;
 			}
 		}
+		numberMoves = 0;
 	}
 	
 	/**
@@ -128,9 +138,36 @@ public String isWin() {
 			System.out.println("you lose");
 			return "you lose";
 		}
-		
 		return "";
-
 	}
-
+	
+	public FilledTile[] getTiles() {
+		return tiles;
+	}
+	
+	public void setTiles(FilledTile[] t) {
+		tiles = t;
+	}
+	
+	public Tile getEmpty() {
+		return emptyTile;
+	}
+	
+	public void setEmpty(Tile emp) {
+		emptyTile = emp;
+	}
+	
+	public String getEndCondition() {
+		return endCondition;
+	}
+	
+	public int getNumberMoves() {
+		return numberMoves;
+	}
+	
+	public void addMove() {
+		numberMoves++;
+	}
 }
+
+

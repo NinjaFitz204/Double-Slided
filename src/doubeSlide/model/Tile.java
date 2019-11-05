@@ -4,8 +4,8 @@ public class Tile {
 	/**
 	 * location of the tile
 	 */
-	public Location location = new Location(0,0);
-	public int position;
+	Location location = new Location(0,0);
+	int position;
 	
 	public Tile() {
 	}
@@ -20,6 +20,14 @@ public class Tile {
 	}
 	
 	/**
+	 * sets the location of the tile
+	 * @param loc
+	 */
+	public void setLocation(Location loc) {
+		location = loc;
+	}
+	
+	/**
 	 * returns location of the tile
 	 * @return Location
 	 */
@@ -27,4 +35,11 @@ public class Tile {
 		return location;
 	}
 
+	public int getPosition() {
+		return position;
+	}
+	
+	public void setPosition(int p) {
+		position = p;
+	}
 }

@@ -13,7 +13,7 @@ public class FilledTile extends Tile{
 	 * true if black is up
 	 * false if gray is up
 	 */
-	public boolean flipped;
+	boolean flipped;
 	
 	/**
 	 * creates Filled Tile object
