@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import doubeSlide.controller.moveController;
+import doubeSlide.controller.resetController;
 import doubeSlide.model.Model;
 
 public class SlidedApp extends JFrame {
@@ -26,6 +27,7 @@ public class SlidedApp extends JFrame {
 	public SlidedApp(Model model) {
 
 		moveController = new moveController(this, model);
+		resetController reset = new resetController(model,this);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 359, 450);
@@ -46,7 +48,7 @@ public class SlidedApp extends JFrame {
 		// adds function to the reset button
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				model.resetPuzzle();
+				reset.reset();
 				repaint();
 			}
 		});
