@@ -1,8 +1,6 @@
 package doubeSlide.controller;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,7 +11,7 @@ import doubeSlide.model.Puzzle;
 import doubeSlide.model.Tile;
 import doubeSlide.view.SlidedApp;
 
-public class moveController implements KeyListener,MouseListener {
+public class moveController implements MouseListener {
 	Model model;
 	SlidedApp app;
 
@@ -35,9 +33,9 @@ public class moveController implements KeyListener,MouseListener {
 		int clickedTile = 0;
 		// gets location of empty tile
 		Location empty = puz.getEmpty().getLocation();
-		System.out.print(" ");
-		System.out.print(empty.row);
-		System.out.println(empty.col);
+		System.out.println(" ");
+		//System.out.print(empty.row);
+		//System.out.println(empty.col);
 
 		// return out of method if clicked on empty tile
 		if (loc.equals(empty)) {
@@ -81,7 +79,7 @@ public class moveController implements KeyListener,MouseListener {
 	}
 
 	/**
-	 * gets the row and col of the tile that is clicked
+	 * gets the point of the tile that is clicked
 	 */
 	public void mousePressed(MouseEvent me) {
 		
@@ -89,7 +87,14 @@ public class moveController implements KeyListener,MouseListener {
 		if(!model.getPuzzle().getEndCondition().equals(""))
 			return;
 		
-		Point point = me.getPoint();
+		clickLocation(me.getPoint());
+	}
+	
+	/**
+	 * gets the row and col of a tile
+	 * given a point
+	 */
+	protected void clickLocation(Point point) {
 		// gets row and column
 		int col;
 		int row;
@@ -113,39 +118,7 @@ public class moveController implements KeyListener,MouseListener {
 		moveTile(new Location(row, col));
 	}
 
-	@Override
-	public void keyPressed(KeyEvent me) {
-		/*
-		System.out.println("keypressed");
-		Location empty = model.getPuzzle().emptyTile.location;
-		int row = empty.row;
-		int col = empty.col;
-		
-		if(me.getKeyCode() == me.VK_KP_RIGHT) {
-			col++;
-			
-		}if(me.getKeyCode() == me.VK_KP_LEFT) {
-			col--;
-			
-		}if(me.getKeyCode() == me.VK_KP_DOWN) {
-			row--;
-			
-		}if(me.getKeyCode() == me.VK_KP_UP) {
-			row++;
-		}
-		
-		if(row>3||col>3) {
-			
-		}else {
-			empty.col=col;
-			empty.row=row;
-		}
-		
-		moveTile(empty);
-		*/
-	}
 
-	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -170,16 +143,4 @@ public class moveController implements KeyListener,MouseListener {
 		
 	}
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("keyrelease");
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("keytyped");
-		
-	}
 }

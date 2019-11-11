@@ -38,7 +38,6 @@ public class SlidedApp extends JFrame {
 
 		gamePanel = new PuzzleView(model);
 		gamePanel.addMouseListener(moveController);
-		gamePanel.addKeyListener(moveController);
 		gamePanel.setBounds(20, 45, 310, 350);
 		contentPane.add(gamePanel);
 
